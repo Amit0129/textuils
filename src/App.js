@@ -25,13 +25,13 @@ function App() {
       document.body.style.backgroundColor = "white";
       setModeText("Enable DarkMode");
       showAlert("Light mode is Enable", "success");
-      document.title = "TextUtils - LightMode";
+      // document.title = "TextUtils - LightMode";
     } else {
       setMode("dark");
       document.body.style.backgroundColor = "#042743";
       setModeText("Disable DarkMode");
       showAlert("Dark mode is Enable", "success");
-      document.title = "TextUtils - DarkMode";
+      // document.title = "TextUtils - DarkMode";
     }
   };
   return (
@@ -46,8 +46,8 @@ function App() {
         <Alert alert={alert} />
         <div className="container my-3">
           <Routes>
-            <Route path="about" element = {<About/>}/>
-            <Route path="/" element = {<TextForm
+            <Route exact path="about" element = {<About mode={mode}/>}/>
+            <Route exact path="/" element = {<TextForm
                   showAlert={showAlert}
                   heading="Enter your Text to analyse below"
                   mode={mode}
