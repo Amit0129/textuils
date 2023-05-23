@@ -22,6 +22,10 @@ export default function TextForm(props) {
     setText(newText);
     props.showAlert("Convert to LowerCase","success")
   };
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text);
+    props.showAlert("Copied to Clipbord","success")
+  };
 
   return (
     <>
@@ -46,11 +50,14 @@ export default function TextForm(props) {
         <button disabled = {text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleLoCkick}>
           Convert to Lowercase
         </button>
+        <button disabled = {text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleCopy}>
+          Copy text
+        </button>
       </div>
       <div className="cointainer my-2" style={{color:props.mode==='light'?'black':'white'}}>
         <h2>Your text summery</h2>
         <p>
-          {text.split(" ").filter((element)=>{return element.length!==0}).length} Words,{text.length} Characters
+          {text.split(/\s+/).filter((element)=>{return element.length!==0}).length} Words,{text.length} Characters
         </p>
         <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minut Takes to Read</p>
         <h2>Preview</h2>
